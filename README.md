@@ -30,4 +30,15 @@ Sir/Madam Hello  ,
 # internship journey, learning from internship
 		I very much enjoyed the internship program of python with machine learning . The course started with basics of python and then machine learning involves learning of different maps,chatbot and few algorithms and building a model.
 		Overall this internship program was very helpful and got learn these technologies with a very profound atomosphere.I thank DLithe for providing the same.
+		
+# assignment details with outcome
+
+## description
+		What is emotion detection and recognition?
+			Emotion Detection & Recognition is a technology that recognizes a human's behavior and emotion by integrating image processing techniques. The software tools applicable to cater to the purpose of detection and recognition can detect slight facial changes.
+
+		How Python is used in face recognition?
+			You first pass in the image and cascade names as command-line arguments. We'll use the ABBA image as well as the default cascade for detecting faces provided by OpenCV. Now we create the cascade and initialize it with our face cascade. This loads the face cascade into memory so it's ready for use.
+
+
 
