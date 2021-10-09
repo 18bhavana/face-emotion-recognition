@@ -43,7 +43,7 @@ Sir/Madam Hello  ,
 ## Program Code			
 
 # Conclusion
-		In a nutshell, this internship has been an excellent and rewarding experience. I can conclude that there have been a lot I’ve learnt from my work at DLithe. Needless to say, the technical aspects of the work I’ve done are not flawless and could be improved provided enough time. As someone with no prior experience with Node.
+		In a nutshell, this internship has been an excellent and rewarding experience. I can conclude that there have been a lot I’ve learnt from my work at DLithe. Needless to say, the technical aspects of the work I’ve done are not flawless and could be improved provided enough time. 
 
 
 
