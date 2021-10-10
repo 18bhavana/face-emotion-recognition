@@ -39,17 +39,6 @@ Sir/Madam Hello ,
 
 		How Python is used in face recognition?
 			You first pass in the image and cascade names as command-line arguments. We'll use the ABBA image as well as the default cascade for detecting faces provided by OpenCV. Now we create the cascade and initialize it with our face cascade. This loads the face cascade into memory so it's ready for use.
-	
-## PROGRAM CODE	
-	!pip install deepface
-	import cv2
-	import matplotlib.pyplot as plt
-	from deepface import DeepFace
-	from google.colab import drive
-	drive.mount('/content/drive')
-	img = cv2.imread('/content/drive/MyDrive/michael-dam-mEZ3PoFGs_k-unsplash.jpg')
-	plt.imshow(img[:,:,::-1])
-	plt.show()
 
 # CONCLUSION
 		In a nutshell, this internship has been an excellent and rewarding experience. I can conclude that there have been a lot I’ve learnt from my work at DLithe. Needless to say, the technical aspects of the work I’ve done are not flawless and could be improved provided enough time. 
