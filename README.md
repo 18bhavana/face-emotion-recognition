@@ -46,12 +46,12 @@ Sir/Madam Hello ,
 	import matplotlib.pyplot as plt
 	from deepface import DeepFace
 	from google.colab import drive
-	drive.mount('/content/derive')
-	img=cv2.imread()
+	drive.mount('/content/drive')
+	img = cv2.imread()
 	plt.imshow(img[:,:,::-1])
 	plt.show()
-	result=DeepFace.analyze(img.actions = ['emotion'])
-	print (result) 
+	result = DeepFace.analyze(img.actions=['emotion'])
+	print(result) 
 	
 
 
