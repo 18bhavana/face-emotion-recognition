@@ -1,478 +1,855 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Coming Soon</title>
+<title>Coming Soon</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-    }
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
 
-    body {
-      overflow: hidden;
-      font-family:
+body {
+    overflow: hidden;
+    background: #01030b;
+    color: white;
+    font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
-        Roboto,
         Arial,
         sans-serif;
+}
 
-      color: #fff;
+/* =====================================================
+   SPACE BACKGROUND
+===================================================== */
 
-      background:
+.space {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+
+    background:
         radial-gradient(
-          circle at 50% 65%,
-          rgba(55, 85, 180, 0.18),
-          transparent 32%
+            circle at 50% 40%,
+            rgba(30, 55, 130, 0.18),
+            transparent 35%
         ),
         radial-gradient(
-          circle at 20% 20%,
-          rgba(70, 100, 255, 0.08),
-          transparent 30%
+            circle at 85% 15%,
+            rgba(80, 40, 180, 0.12),
+            transparent 30%
         ),
-        #020611;
-    }
+        linear-gradient(
+            180deg,
+            #01030b 0%,
+            #020719 50%,
+            #01030b 100%
+        );
+}
 
-    /* ------------------------------
-       STARS
-    ------------------------------ */
+/* =====================================================
+   STARS
+===================================================== */
 
-    .stars,
-    .stars::before,
-    .stars::after {
-      position: absolute;
-      inset: 0;
-      content: "";
-      pointer-events: none;
-    }
+.stars,
+.stars2,
+.stars3 {
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+    pointer-events: none;
+}
 
-    .stars {
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255,255,255,.55) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(150,200,255,.7) 1px, transparent 1.5px);
+.stars {
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1.5px);
 
-      background-size:
-        190px 190px,
-        270px 270px,
-        330px 330px;
+    background-size:
+        170px 170px,
+        260px 260px;
 
-      background-position:
-        20px 30px,
-        100px 80px,
-        40px 160px;
+    background-position:
+        10px 20px,
+        100px 80px;
 
-      opacity: .45;
-    }
+    opacity: .65;
+}
 
-    .stars::before {
-      background-image:
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(130,180,255,.8) 1px, transparent 1.5px);
+.stars2 {
+    background-image:
+        radial-gradient(circle, #fff 1.2px, transparent 2px),
+        radial-gradient(circle, rgba(100,180,255,.8) 1px, transparent 2px);
 
-      background-size:
-        410px 410px,
-        520px 520px;
+    background-size:
+        330px 330px,
+        420px 420px;
 
-      background-position:
-        180px 120px,
-        250px 50px;
+    background-position:
+        40px 120px,
+        200px 50px;
 
-      opacity: .45;
-    }
+    opacity: .45;
+}
 
-    /* ------------------------------
-       NEBULA
-    ------------------------------ */
+.stars3 {
+    background-image:
+        radial-gradient(circle, white 1.5px, transparent 2px);
 
-    .nebula {
-      position: absolute;
+    background-size: 520px 520px;
+    background-position: 80px 200px;
 
-      width: 700px;
-      height: 450px;
+    opacity: .3;
+}
 
-      top: 20%;
-      left: 50%;
+/* =====================================================
+   NEBULA
+===================================================== */
 
-      transform: translateX(-50%);
+.nebula {
+    position: absolute;
 
-      background:
+    width: 900px;
+    height: 600px;
+
+    left: 50%;
+    top: 15%;
+
+    transform: translateX(-50%);
+
+    background:
         radial-gradient(
-          ellipse,
-          rgba(70, 110, 255, .12),
-          rgba(70, 60, 180, .05) 40%,
-          transparent 70%
+            ellipse,
+            rgba(70, 90, 255, .13),
+            rgba(130, 50, 220, .06) 35%,
+            transparent 70%
         );
 
-      filter: blur(35px);
+    filter: blur(45px);
 
-      pointer-events: none;
+    animation: nebulaMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaMove {
+    from {
+        transform: translateX(-50%) scale(1);
     }
 
-    /* ------------------------------
-       CONTENT
-    ------------------------------ */
+    to {
+        transform: translateX(-50%) scale(1.12);
+    }
+}
 
-    .content {
-      position: relative;
-      z-index: 5;
+/* =====================================================
+   SUN
+===================================================== */
 
-      height: 100vh;
+.sun {
+    position: absolute;
 
-      display: flex;
-      flex-direction: column;
+    width: 125px;
+    height: 125px;
 
-      align-items: center;
-      justify-content: center;
+    top: 11%;
+    right: 12%;
 
-      text-align: center;
+    border-radius: 50%;
 
-      padding: 30px 20px 180px;
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fff,
+            #ffe77a 20%,
+            #ffb52e 55%,
+            #ff641f 75%,
+            transparent 76%
+        );
+
+    box-shadow:
+        0 0 30px #ffbd45,
+        0 0 80px rgba(255, 170, 40, .55),
+        0 0 160px rgba(255, 110, 30, .25);
+
+    animation: sunPulse 5s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+    0%,100% {
+        transform: scale(1);
     }
 
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 22px;
+    50% {
+        transform: scale(1.06);
+    }
+}
 
-      color: #aeb9d4;
+/* =====================================================
+   SMALL PLANET
+===================================================== */
 
-      font-size: 13px;
-      font-weight: 500;
+.planet-small {
+    position: absolute;
 
-      letter-spacing: 6px;
-      text-transform: uppercase;
+    width: 95px;
+    height: 95px;
 
-      margin-bottom: 35px;
+    left: 10%;
+    top: 18%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #c3d8ff,
+            #5272c9 35%,
+            #18275d 70%,
+            #050a20
+        );
+
+    box-shadow:
+        inset -20px -15px 30px rgba(0,0,0,.6),
+        0 0 30px rgba(80,120,255,.2);
+}
+
+/* Planet ring */
+
+.planet-small::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 38px;
+
+    left: -28px;
+    top: 30px;
+
+    border: 2px solid rgba(150,180,255,.35);
+
+    border-radius: 50%;
+
+    transform: rotate(-18deg);
+}
+
+/* =====================================================
+   SATELLITE
+===================================================== */
+
+.satellite {
+    position: absolute;
+
+    width: 100px;
+    height: 70px;
+
+    right: 17%;
+    top: 35%;
+
+    transform: rotate(-12deg);
+
+    animation: satelliteFloat 8s ease-in-out infinite;
+}
+
+@keyframes satelliteFloat {
+    0%,100% {
+        transform: translate(0,0) rotate(-12deg);
     }
 
-    .eyebrow span {
-      display: block;
+    50% {
+        transform: translate(-35px,18px) rotate(-5deg);
+    }
+}
 
-      width: 45px;
-      height: 1px;
+/* Satellite body */
 
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #91a8ff
-      );
+.satellite-body {
+    position: absolute;
+
+    width: 42px;
+    height: 32px;
+
+    left: 29px;
+    top: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5ebf5,
+            #68758b
+        );
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 0 8px rgba(150,200,255,.3);
+}
+
+/* Antenna */
+
+.satellite-body::before {
+    content: "";
+
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    right: -15px;
+    top: 4px;
+
+    border: 2px solid #cfd9e8;
+
+    border-radius: 50%;
+}
+
+.satellite-body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 2px;
+
+    right: -27px;
+    top: 15px;
+
+    background: #cfd9e8;
+
+    transform: rotate(-15deg);
+}
+
+/* Solar panels */
+
+.panel {
+    position: absolute;
+
+    width: 27px;
+    height: 42px;
+
+    top: 13px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #172e68 0px,
+            #172e68 5px,
+            #5d82d4 6px,
+            #172e68 7px
+        );
+
+    border: 1px solid #809bd8;
+}
+
+.panel.left {
+    left: 0;
+}
+
+.panel.right {
+    right: 0;
+}
+
+/* =====================================================
+   ORBIT
+===================================================== */
+
+.orbit {
+    position: absolute;
+
+    width: 500px;
+    height: 160px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-15deg);
+
+    border: 1px solid rgba(120,160,255,.12);
+
+    border-radius: 50%;
+}
+
+.orbit-dot {
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    right: 8%;
+    top: 12%;
+
+    border-radius: 50%;
+
+    background: #7ee7ff;
+
+    box-shadow:
+        0 0 15px #7ee7ff;
+
+    animation: orbitDot 7s linear infinite;
+}
+
+@keyframes orbitDot {
+    from {
+        transform: rotate(0deg);
     }
 
-    .eyebrow span:last-child {
-      background: linear-gradient(
-        90deg,
-        #91a8ff,
-        transparent
-      );
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =====================================================
+   SHOOTING STAR
+===================================================== */
+
+.shooting-star {
+    position: absolute;
+
+    width: 130px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9)
+        );
+
+    transform: rotate(-35deg);
+
+    opacity: 0;
+
+    animation: shootingStar 7s linear infinite;
+}
+
+.shooting-star.one {
+    top: 18%;
+    left: -10%;
+}
+
+.shooting-star.two {
+    top: 42%;
+    left: 40%;
+
+    animation-delay: 3.5s;
+}
+
+@keyframes shootingStar {
+
+    0% {
+        transform:
+            translate(0,0)
+            rotate(-35deg);
+
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    18% {
+        transform:
+            translate(600px,350px)
+            rotate(-35deg);
+
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.content {
+    position: relative;
+    z-index: 20;
+
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding-bottom: 130px;
+}
+
+/* Small label */
+
+.label {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    color: #9eaccb;
+
+    font-size: 13px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 32px;
+}
+
+.label::before,
+.label::after {
+    content: "";
+
+    width: 45px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #7895dc
+        );
+}
+
+.label::after {
+    background:
+        linear-gradient(
+            90deg,
+            #7895dc,
+            transparent
+        );
+}
+
+/* Heading */
+
+h1 {
+    font-size: clamp(55px, 10vw, 125px);
+
+    line-height: .9;
+
+    letter-spacing: -5px;
+
+    font-weight: 700;
+
+    margin-bottom: 32px;
+}
+
+.white {
+    color: white;
+}
+
+.gradient {
+    background:
+        linear-gradient(
+            90deg,
+            #65e6ff,
+            #668aff,
+            #955eff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+/* Description */
+
+.description {
+    color: #aeb9d0;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 30px;
+}
+
+/* Button */
+
+.contact {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 27px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(150,180,255,.45);
+
+    background: rgba(10,20,50,.3);
+
+    color: #dce5ff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+}
+
+.contact:hover {
+    transform: translateY(-3px);
+
+    border-color: #91b0ff;
+
+    box-shadow:
+        0 0 30px rgba(70,130,255,.25);
+}
+
+/* =====================================================
+   EARTH HORIZON
+===================================================== */
+
+.earth {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 155%;
+
+    height: 430px;
+
+    left: -27.5%;
+
+    bottom: -350px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(60,120,210,.6),
+            rgba(15,35,85,.55) 30%,
+            #01030a 70%
+        );
+
+    border-top:
+        2px solid
+        rgba(120,190,255,.9);
+
+    box-shadow:
+        0 -8px 30px rgba(70,150,255,.75),
+        0 -20px 80px rgba(50,100,255,.25);
+}
+
+/* Horizon glow */
+
+.earth::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 80px;
+
+    left: 50%;
+    top: -30px;
+
+    transform: translateX(-50%);
+
+    background:
+        rgba(100,190,255,.8);
+
+    filter: blur(35px);
+
+    border-radius: 50%;
+}
+
+/* Sunrise */
+
+.earth::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    left: 50%;
+    top: -5px;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px 5px white,
+        0 0 40px 15px rgba(80,160,255,.8);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .sun {
+        width: 75px;
+        height: 75px;
+
+        right: 8%;
+        top: 9%;
+    }
+
+    .planet-small {
+        width: 55px;
+        height: 55px;
+
+        left: 7%;
+        top: 20%;
+    }
+
+    .planet-small::after {
+        width: 85px;
+        height: 25px;
+
+        left: -15px;
+        top: 15px;
+    }
+
+    .satellite {
+        right: 8%;
+        top: 31%;
+
+        transform: scale(.7);
+    }
+
+    .orbit {
+        width: 310px;
+        height: 110px;
+    }
+
+    .label {
+        font-size: 10px;
+        letter-spacing: 4px;
+        gap: 10px;
+    }
+
+    .label::before,
+    .label::after {
+        width: 22px;
     }
 
     h1 {
-      font-size: clamp(58px, 10vw, 125px);
-
-      line-height: .9;
-
-      font-weight: 700;
-
-      letter-spacing: -5px;
-
-      margin-bottom: 35px;
-    }
-
-    h1 .white {
-      color: #fff;
-    }
-
-    h1 .gradient {
-      background: linear-gradient(
-        90deg,
-        #6ee7ff,
-        #6d8cff,
-        #8b5cf6
-      );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
+        font-size: 62px;
+        letter-spacing: -3px;
     }
 
     .description {
-      max-width: 650px;
-
-      color: #aeb8cc;
-
-      font-size: 17px;
-      line-height: 1.8;
-
-      letter-spacing: 1px;
-
-      margin-bottom: 35px;
-    }
-
-    /* ------------------------------
-       CONTACT BUTTON
-    ------------------------------ */
-
-    .contact {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 13px;
-
-      padding: 13px 25px;
-
-      border: 1px solid rgba(150, 175, 255, .45);
-
-      border-radius: 50px;
-
-      color: #dbe5ff;
-
-      text-decoration: none;
-
-      font-size: 14px;
-
-      background: rgba(10, 20, 50, .35);
-
-      backdrop-filter: blur(8px);
-
-      transition: all .3s ease;
-    }
-
-    .contact:hover {
-      border-color: rgba(150, 190, 255, .9);
-
-      box-shadow:
-        0 0 30px rgba(80, 130, 255, .25);
-
-      transform: translateY(-2px);
-    }
-
-    .contact-icon {
-      font-size: 17px;
-    }
-
-    /* ------------------------------
-       PLANET HORIZON
-    ------------------------------ */
-
-    .planet {
-      position: absolute;
-
-      width: 150%;
-      height: 390px;
-
-      left: -25%;
-      bottom: -330px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          ellipse at 50% 0%,
-          rgba(70, 110, 190, .45),
-          rgba(12, 30, 75, .45) 35%,
-          #01040b 70%
-        );
-
-      border-top: 2px solid rgba(100, 170, 255, .85);
-
-      box-shadow:
-        0 -5px 25px rgba(60, 130, 255, .7),
-        0 -15px 60px rgba(60, 100, 255, .25);
-
-      z-index: 2;
-    }
-
-    /* Horizon glow */
-
-    .planet::before {
-      content: "";
-
-      position: absolute;
-
-      width: 320px;
-      height: 65px;
-
-      left: 50%;
-      top: -25px;
-
-      transform: translateX(-50%);
-
-      background: rgba(110, 180, 255, .7);
-
-      filter: blur(35px);
-
-      border-radius: 50%;
-    }
-
-    /* Sunrise */
-
-    .planet::after {
-      content: "";
-
-      position: absolute;
-
-      width: 6px;
-      height: 6px;
-
-      left: 50%;
-      top: -5px;
-
-      transform: translateX(-50%);
-
-      border-radius: 50%;
-
-      background: #fff;
-
-      box-shadow:
-        0 0 12px 5px #fff,
-        0 0 30px 12px rgba(100, 180, 255, .9);
-    }
-
-    /* ------------------------------
-       FLOATING ORBIT
-    ------------------------------ */
-
-    .orbit {
-      position: absolute;
-
-      width: 480px;
-      height: 150px;
-
-      border: 1px solid rgba(120, 160, 255, .08);
-
-      border-radius: 50%;
-
-      left: 50%;
-      top: 50%;
-
-      transform:
-        translate(-50%, -50%)
-        rotate(-12deg);
-
-      pointer-events: none;
-    }
-
-    .orbit::after {
-      content: "";
-
-      position: absolute;
-
-      width: 5px;
-      height: 5px;
-
-      border-radius: 50%;
-
-      background: #79d8ff;
-
-      box-shadow:
-        0 0 12px #79d8ff;
-
-      right: 8%;
-      top: 12%;
-    }
-
-    /* ------------------------------
-       MOBILE
-    ------------------------------ */
-
-    @media (max-width: 600px) {
-
-      .content {
-        padding-bottom: 120px;
-      }
-
-      .eyebrow {
-        font-size: 10px;
-        letter-spacing: 4px;
-        gap: 12px;
-      }
-
-      .eyebrow span {
-        width: 25px;
-      }
-
-      h1 {
-        font-size: 62px;
-        letter-spacing: -3px;
-      }
-
-      .description {
         font-size: 14px;
         line-height: 1.7;
-        max-width: 340px;
-      }
 
-      .planet {
+        max-width: 340px;
+    }
+
+    .earth {
         width: 190%;
         left: -45%;
-        bottom: -270px;
-      }
-
-      .orbit {
-        width: 300px;
-      }
+        bottom: -285px;
     }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Background stars -->
-  <div class="stars"></div>
+<div class="space">
 
-  <!-- Nebula -->
-  <div class="nebula"></div>
+    <!-- Stars -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
 
-  <!-- Decorative orbit -->
-  <div class="orbit"></div>
+    <!-- Nebula -->
+    <div class="nebula"></div>
 
-  <!-- Main content -->
-  <main class="content">
+    <!-- Sun -->
+    <div class="sun"></div>
 
-    <div class="eyebrow">
-      <span></span>
-      Something New
-      <span></span>
+    <!-- Small planet -->
+    <div class="planet-small"></div>
+
+    <!-- Satellite -->
+    <div class="satellite">
+
+        <div class="panel left"></div>
+
+        <div class="satellite-body"></div>
+
+        <div class="panel right"></div>
+
     </div>
 
-    <h1>
-      <span class="white">COMING</span>
-      <span class="gradient">SOON</span>
-    </h1>
+    <!-- Orbit -->
+    <div class="orbit">
+        <div class="orbit-dot"></div>
+    </div>
 
-    <p class="description">
-      We're working on something exciting.<br>
-      Something new is taking shape.<br>
-      Stay tuned.
-    </p>
+    <!-- Shooting stars -->
+    <div class="shooting-star one"></div>
+    <div class="shooting-star two"></div>
 
-    <a
-      class="contact"
-      href="mailto:your@email.com"
-    >
-      <span class="contact-icon">✉</span>
-      Get in touch
-    </a>
+    <!-- Main content -->
+    <main class="content">
 
-  </main>
+        <div class="label">
+            <span></span>
+            Something New
+            <span></span>
+        </div>
 
-  <!-- Planet -->
-  <div class="planet"></div>
+        <h1>
+            <span class="white">COMING</span>
+            <span class="gradient">SOON</span>
+        </h1>
+
+        <p class="description">
+            We're working on something exciting.<br>
+            Something new is taking shape.<br>
+            Stay tuned for the journey.
+        </p>
+
+        <a
+            class="contact"
+            href="mailto:your@email.com"
+        >
+            ✉ &nbsp; Get in touch
+        </a>
+
+    </main>
+
+    <!-- Earth -->
+    <div class="earth"></div>
+
+</div>
 
 </body>
 </html>
