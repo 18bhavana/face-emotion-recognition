@@ -22,17 +22,18 @@ body {
 body {
     overflow: hidden;
     background: #01030b;
-    color: white;
+    color: #fff;
     font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
         Arial,
         sans-serif;
 }
 
 /* =====================================================
-   SPACE BACKGROUND
+   SPACE
 ===================================================== */
 
 .space {
@@ -42,19 +43,19 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 40%,
-            rgba(30, 55, 130, 0.18),
+            circle at 50% 42%,
+            rgba(35, 65, 150, .18),
             transparent 35%
         ),
         radial-gradient(
             circle at 85% 15%,
-            rgba(80, 40, 180, 0.12),
+            rgba(100, 45, 190, .12),
             transparent 30%
         ),
         linear-gradient(
             180deg,
             #01030b 0%,
-            #020719 50%,
+            #020719 55%,
             #01030b 100%
         );
 }
@@ -68,7 +69,6 @@ body {
 .stars3 {
     position: absolute;
     inset: 0;
-    background-repeat: repeat;
     pointer-events: none;
 }
 
@@ -125,14 +125,14 @@ body {
     height: 600px;
 
     left: 50%;
-    top: 15%;
+    top: 10%;
 
     transform: translateX(-50%);
 
     background:
         radial-gradient(
             ellipse,
-            rgba(70, 90, 255, .13),
+            rgba(70, 100, 255, .14),
             rgba(130, 50, 220, .06) 35%,
             transparent 70%
         );
@@ -162,7 +162,7 @@ body {
     width: 125px;
     height: 125px;
 
-    top: 11%;
+    top: 10%;
     right: 12%;
 
     border-radius: 50%;
@@ -179,14 +179,14 @@ body {
 
     box-shadow:
         0 0 30px #ffbd45,
-        0 0 80px rgba(255, 170, 40, .55),
-        0 0 160px rgba(255, 110, 30, .25);
+        0 0 80px rgba(255,170,40,.55),
+        0 0 160px rgba(255,110,30,.25);
 
     animation: sunPulse 5s ease-in-out infinite;
 }
 
 @keyframes sunPulse {
-    0%,100% {
+    0%, 100% {
         transform: scale(1);
     }
 
@@ -196,7 +196,7 @@ body {
 }
 
 /* =====================================================
-   SMALL PLANET
+   PLANET
 ===================================================== */
 
 .planet-small {
@@ -205,8 +205,8 @@ body {
     width: 95px;
     height: 95px;
 
-    left: 10%;
-    top: 18%;
+    left: 9%;
+    top: 17%;
 
     border-radius: 50%;
 
@@ -221,10 +221,8 @@ body {
 
     box-shadow:
         inset -20px -15px 30px rgba(0,0,0,.6),
-        0 0 30px rgba(80,120,255,.2);
+        0 0 30px rgba(80,120,255,.25);
 }
-
-/* Planet ring */
 
 .planet-small::after {
     content: "";
@@ -255,7 +253,7 @@ body {
     height: 70px;
 
     right: 17%;
-    top: 35%;
+    top: 34%;
 
     transform: rotate(-12deg);
 
@@ -263,7 +261,7 @@ body {
 }
 
 @keyframes satelliteFloat {
-    0%,100% {
+    0%, 100% {
         transform: translate(0,0) rotate(-12deg);
     }
 
@@ -271,8 +269,6 @@ body {
         transform: translate(-35px,18px) rotate(-5deg);
     }
 }
-
-/* Satellite body */
 
 .satellite-body {
     position: absolute;
@@ -291,12 +287,7 @@ body {
         );
 
     border-radius: 4px;
-
-    box-shadow:
-        0 0 8px rgba(150,200,255,.3);
 }
-
-/* Antenna */
 
 .satellite-body::before {
     content: "";
@@ -329,8 +320,6 @@ body {
 
     transform: rotate(-15deg);
 }
-
-/* Solar panels */
 
 .panel {
     position: absolute;
@@ -367,8 +356,8 @@ body {
 .orbit {
     position: absolute;
 
-    width: 500px;
-    height: 160px;
+    width: 520px;
+    height: 170px;
 
     left: 50%;
     top: 50%;
@@ -397,54 +386,41 @@ body {
 
     box-shadow:
         0 0 15px #7ee7ff;
-
-    animation: orbitDot 7s linear infinite;
-}
-
-@keyframes orbitDot {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 /* =====================================================
-   SHOOTING STAR
+   SHOOTING STARS
 ===================================================== */
 
 .shooting-star {
     position: absolute;
 
-    width: 130px;
+    width: 140px;
     height: 2px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.9)
+            rgba(255,255,255,.95)
         );
 
     transform: rotate(-35deg);
 
     opacity: 0;
 
-    animation: shootingStar 7s linear infinite;
+    animation: shootingStar 8s linear infinite;
 }
 
 .shooting-star.one {
-    top: 18%;
+    top: 15%;
     left: -10%;
 }
 
 .shooting-star.two {
-    top: 42%;
-    left: 40%;
-
-    animation-delay: 3.5s;
+    top: 38%;
+    left: 45%;
+    animation-delay: 4s;
 }
 
 @keyframes shootingStar {
@@ -492,10 +468,13 @@ body {
 
     text-align: center;
 
-    padding-bottom: 130px;
+    padding:
+        30px
+        20px
+        145px;
 }
 
-/* Small label */
+/* Label */
 
 .label {
     display: flex;
@@ -574,7 +553,7 @@ h1 {
 /* Description */
 
 .description {
-    color: #aeb9d0;
+    color: #b0bad0;
 
     font-size: 17px;
 
@@ -582,25 +561,46 @@ h1 {
 
     letter-spacing: 1px;
 
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
-/* Button */
+/* =====================================================
+   COLLABORATION MESSAGE
+===================================================== */
+
+.interest {
+    color: #7f8da8;
+
+    font-size: 13px;
+
+    letter-spacing: .5px;
+
+    margin-bottom: 18px;
+}
+
+.interest strong {
+    color: #c5d1e8;
+
+    font-weight: 500;
+}
+
+/* CTA */
 
 .contact {
     display: inline-flex;
 
     align-items: center;
 
-    gap: 12px;
+    gap: 11px;
 
-    padding: 13px 27px;
+    padding: 13px 28px;
 
     border-radius: 50px;
 
     border: 1px solid rgba(150,180,255,.45);
 
-    background: rgba(10,20,50,.3);
+    background:
+        rgba(10,20,50,.35);
 
     color: #dce5ff;
 
@@ -610,7 +610,7 @@ h1 {
 
     backdrop-filter: blur(10px);
 
-    transition: .3s;
+    transition: .3s ease;
 }
 
 .contact:hover {
@@ -619,7 +619,7 @@ h1 {
     border-color: #91b0ff;
 
     box-shadow:
-        0 0 30px rgba(70,130,255,.25);
+        0 0 30px rgba(70,130,255,.3);
 }
 
 /* =====================================================
@@ -632,11 +632,9 @@ h1 {
     z-index: 10;
 
     width: 155%;
-
     height: 430px;
 
     left: -27.5%;
-
     bottom: -350px;
 
     border-radius: 50%;
@@ -658,8 +656,6 @@ h1 {
         0 -20px 80px rgba(50,100,255,.25);
 }
 
-/* Horizon glow */
-
 .earth::before {
     content: "";
 
@@ -680,8 +676,6 @@ h1 {
 
     border-radius: 50%;
 }
-
-/* Sunrise */
 
 .earth::after {
     content: "";
@@ -712,10 +706,10 @@ h1 {
 @media (max-width: 600px) {
 
     .sun {
-        width: 75px;
-        height: 75px;
+        width: 70px;
+        height: 70px;
 
-        right: 8%;
+        right: 7%;
         top: 9%;
     }
 
@@ -723,8 +717,8 @@ h1 {
         width: 55px;
         height: 55px;
 
-        left: 7%;
-        top: 20%;
+        left: 6%;
+        top: 19%;
     }
 
     .planet-small::after {
@@ -736,14 +730,14 @@ h1 {
     }
 
     .satellite {
-        right: 8%;
-        top: 31%;
+        right: 5%;
+        top: 30%;
 
         transform: scale(.7);
     }
 
     .orbit {
-        width: 310px;
+        width: 320px;
         height: 110px;
     }
 
@@ -766,8 +760,14 @@ h1 {
     .description {
         font-size: 14px;
         line-height: 1.7;
+    }
 
-        max-width: 340px;
+    .interest {
+        font-size: 12px;
+    }
+
+    .contact {
+        padding: 12px 23px;
     }
 
     .earth {
@@ -783,7 +783,7 @@ h1 {
 
 <div class="space">
 
-    <!-- Stars -->
+    <!-- Background -->
     <div class="stars"></div>
     <div class="stars2"></div>
     <div class="stars3"></div>
@@ -794,18 +794,14 @@ h1 {
     <!-- Sun -->
     <div class="sun"></div>
 
-    <!-- Small planet -->
+    <!-- Planet -->
     <div class="planet-small"></div>
 
     <!-- Satellite -->
     <div class="satellite">
-
         <div class="panel left"></div>
-
         <div class="satellite-body"></div>
-
         <div class="panel right"></div>
-
     </div>
 
     <!-- Orbit -->
@@ -837,16 +833,21 @@ h1 {
             Stay tuned for the journey.
         </p>
 
+        <p class="interest">
+            <strong>Have an idea for this space?</strong>
+            Let's create something remarkable together.
+        </p>
+
         <a
             class="contact"
-            href="mailto:your@email.com"
+            href="mailto:your@email.com?subject=Interested in this opportunity"
         >
-            ✉ &nbsp; Get in touch
+            ✦ &nbsp; Let's collaborate
         </a>
 
     </main>
 
-    <!-- Earth -->
+    <!-- Earth horizon -->
     <div class="earth"></div>
 
 </div>
